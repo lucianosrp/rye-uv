@@ -1,0 +1,62 @@
+[project]
+name = "dapter"
+version = "0.1.1"
+description = "Tool to adapt multiple dataframes to one unique format"
+authors = [
+    { name = "Luciano Scarpulla", email = "66913960+lucianosrp@users.noreply.github.com " },
+]
+dependencies = ["narwhals"]
+readme = "README.md"
+requires-python = ">= 3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/lucianosrp/dapter"
+
+[project.optional-dependencies]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+managed = true
+dev-dependencies = [
+    "polars",
+    "pandas",
+    "pytest",
+    "pytest-cov",
+    "typing-extensions",
+]
+
+[tool.uv.pip]
+universal = true
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+ignore = ["F401"]
+
+[tool.hatch.build]
+exclude = ["/.*", "/docs", "/tests", "/examples"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["dapter"]
+
+[tool.mypy]
+strict = true
+
+[[tool.mypy.overrides]]
+module = ["narwhals.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+addopts = "--cov=dapter --cov-fail-under=100"
