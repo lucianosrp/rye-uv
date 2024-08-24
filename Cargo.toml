@@ -8,6 +8,7 @@ readme = "README.md"
 license-file = "LICENSE"
 categories = ["development-tools", "command-line-utilities"]
 keywords = ["rye", "uv", "python"]
+authors = ["Luciano Scarpulla"]
 
 [dependencies]
 anyhow = "1.0.86"
