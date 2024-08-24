@@ -39,7 +39,7 @@ rye-uv pyproject.toml --no-overwrite
 
 ### With Cargo
 ```
-cargo add rye-uv
+cargo install rye-uv
 ```
 
 ### From source
