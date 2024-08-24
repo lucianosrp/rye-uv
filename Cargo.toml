@@ -6,6 +6,8 @@ homepage = "https://github.com/lucianosrp/rye-uv"
 repository = "https://github.com/lucianosrp/rye-uv"
 readme = "README.md"
 license-file = "LICENSE"
+categories = ["development-tools", "command-line-utilities"]
+keywords = ["rye", "uv", "python"]
 
 [dependencies]
 anyhow = "1.0.86"
