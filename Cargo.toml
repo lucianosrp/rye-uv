@@ -2,6 +2,7 @@
 name = "rye-uv"
 version = "0.1.1"
 edition = "2021"
+description = "A CLI tool to migrate from Rye to Uv"
 homepage = "https://github.com/lucianosrp/rye-uv"
 repository = "https://github.com/lucianosrp/rye-uv"
 readme = "README.md"
