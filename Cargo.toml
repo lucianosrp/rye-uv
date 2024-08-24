@@ -1,9 +1,11 @@
 [package]
 name = "rye-uv"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+homepage = "https://github.com/lucianosrp/rye-uv"
+repository = "https://github.com/lucianosrp/rye-uv"
+readme = "README.md"
+license-file = "LICENSE"
 
 [dependencies]
 anyhow = "1.0.86"

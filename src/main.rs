@@ -5,7 +5,7 @@ use std::{
     path::PathBuf,
 };
 
-use clap::{ArgAction, Parser};
+use clap::Parser;
 use toml_edit::DocumentMut;
 
 /// Simple program to greet a person
@@ -20,7 +20,7 @@ struct Args {
     no_overwrite: bool,
 
     /// Don't create a backup file of the original rye config - defaults to false
-    #[arg(long, action=ArgAction::SetFalse, default_value_t = false)]
+    #[arg(long, action, default_value_t = false)]
     no_backup: bool,
 
     /// Just print the output file

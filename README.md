@@ -7,7 +7,7 @@ This tool aims to facilitate the transition from rye to uv.
 It converts the `tool.rye` setttings in `pyproject.toml`  to `tool.uv` and make adjustments when needed.
 
 ## Usage
-```shell
+```
 Usage: rye-uv [OPTIONS] <PYPROJECT>
 
 Arguments:
@@ -29,7 +29,18 @@ rye-uv pyproject.toml
 1. The pyproject.toml file will be overwritten
 2. The original version of the file will be stored in `pyproject-rye.toml`
 
+```
+rye-uv pyproject.toml --no-overwrite
+```
+1. A new `pyproject-uv.toml` will be creared
+
+
 ## How to install
+
+### With Cargo
+```
+cargo add rye-uv
+```
 
 ### From source
 Clone the repository and build using cargo
