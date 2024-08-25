@@ -1,14 +1,6 @@
-#![allow(unused)]
-use std::{
-    error::Error,
-    fs::{self},
-    io::{Read, Write},
-};
-
 use toml_edit::{value, DocumentMut, Item, Table};
 
-/// nest: [item.old_key] => [item.new_key.old_key]
-pub fn nest(item: &mut Item, old_key: &str, new_key: &str) {
+fn nest(item: &mut Item, old_key: &str, new_key: &str) {
     if let Some((key, universal)) = item
         .as_table_mut()
         .expect("Cannot find the tool.uv")
@@ -25,7 +17,7 @@ pub fn nest(item: &mut Item, old_key: &str, new_key: &str) {
     }
 }
 
-pub fn rename(table: &mut Table, key: &str, new_key: &str) {
+fn rename(table: &mut Table, key: &str, new_key: &str) {
     if let Some(value) = table.remove(key) {
         table[new_key] = value;
     }
@@ -44,7 +36,7 @@ pub fn convert(document: &mut DocumentMut) -> anyhow::Result<()> {
                 .as_table_mut()
                 .and_then(|x| x.remove("lock-with-sources"))
             {
-                tool["uv"]["no-sources"] = value(!lock_with_sources.as_bool().unwrap());
+                tool["uv"]["no-sources"] = value(!lock_with_sources.as_bool().unwrap_or(false));
             }
 
             tool["uv"].as_table_mut().and_then(|x| x.remove("virtual"));
