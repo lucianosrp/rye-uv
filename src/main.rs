@@ -8,7 +8,6 @@ use std::{
 use clap::Parser;
 use toml_edit::DocumentMut;
 
-/// Simple program to greet a person
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
 struct Args {
@@ -35,7 +34,7 @@ fn main() -> anyhow::Result<()> {
         let mut bc_buf = String::new();
         let mut bc_file = fs::File::open(args.pyproject.as_path())?;
         bc_file.read_to_string(&mut bc_buf)?;
-        fs::File::create("pyproject-rye.toml")?.write(bc_buf.as_bytes())?;
+        fs::File::create("pyproject-rye.toml")?.write_all(bc_buf.as_bytes())?;
     }
 
     let mut buf = String::new();

@@ -1,3 +1,5 @@
+name: Release
+
 on:
   release:
     types: [created]
@@ -13,11 +15,21 @@ jobs:
           - target: x86_64-pc-windows-gnu
             archive: zip
           - target: x86_64-unknown-linux-musl
-            archive: tar.gz tar.xz tar.zst
+            archive: tar.gz
+          - target: x86_64-unknown-linux-musl
+            archive: tar.xz
+          - target: x86_64-unknown-linux-musl
+            archive: tar.zst
           - target: x86_64-apple-darwin
             archive: zip
+
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
+
+      - name: Set RUSTFLAGS for macOS
+        if: matrix.target == 'x86_64-apple-darwin'
+        run: echo "RUSTFLAGS=-C link-arg=-mmacosx-version-min=10.12" >> $GITHUB_ENV
+
       - name: Compile and release
         uses: rust-build/rust-build.action@v1.4.5
         env:
