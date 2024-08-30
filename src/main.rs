@@ -62,7 +62,8 @@ fn main() -> anyhow::Result<()> {
     };
 
     let mut document: DocumentMut = buf.parse()?;
-    rye_uv::convert(&mut document)?;
+    let uv_version = rye_uv::get_tool_version("uv")?;
+    rye_uv::convert(&mut document, uv_version)?;
     let document_string = document.to_string();
     if document_string.trim().is_empty() {
         eprintln!("The file seems to be empty");
