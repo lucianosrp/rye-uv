@@ -31,7 +31,7 @@ pub fn get_tool_version(tool_name: &str) -> anyhow::Result<Version> {
 fn nest(item: &mut Item, old_key: &str, new_key: &str) {
     if let Some((key, universal)) = item
         .as_table_mut()
-        .expect("Cannot find the tool.uv")
+        .expect("Error while parsing the item as as table")
         .remove_entry(old_key)
     {
         let mut sub_table = item
@@ -82,4 +82,39 @@ pub fn convert(document: &mut DocumentMut, uv: Version) -> anyhow::Result<()> {
     }
 
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use pretty_assertions::assert_eq;
+    use std::str::FromStr;
+
+    use toml_edit::Value;
+
+    use super::*;
+
+    #[test]
+    fn test_rename() -> anyhow::Result<()> {
+        let mut table = Table::new();
+        let val = Item::Value(Value::from_str(&"'foo'")?);
+        table["test_foo"] = val.clone();
+        rename(&mut table, "test_foo", "test_bar");
+        assert!(table.contains_key("test_bar"));
+        assert!(!table.contains_key("test_foo"));
+        assert_eq!(table["test_bar"].to_string(), val.to_string());
+        Ok(())
+    }
+
+    #[test]
+    fn test_rename_and_invert() -> anyhow::Result<()> {
+        let mut table = Table::new();
+        let mut inner_table = Table::new();
+        let val = Item::Value(Value::from(true));
+        inner_table["test_foo"] = val.clone();
+        table["bool_val"] = Item::Table(inner_table);
+
+        rename_and_invert(&mut table["bool_val"], "test_foo", "test_bar")?;
+        assert_eq!(table["bool_val"]["test_bar"].as_bool().unwrap(), false);
+        Ok(())
+    }
 }
