@@ -52,23 +52,36 @@ cargo build --release
 ### tool.rye
 All `tool.rye` will be renamed to `tool.uv`.
 
+-----
+
 ### tool.rye.universal
 [Rye Docs](https://rye.astral.sh/guide/pyproject/#toolryeuniversal) | [Uv Docs](https://docs.astral.sh/uv/reference/settings/#pip_universal)
 \
 If set, `tool.rye.universal` will go to `tool.uv.pip.universal`.
 
+-----
+
 ### tool.rye.generate-hashes
-[Rye Docs](https://rye.astral.sh/guide/pyproject/#toolryegenerate-hashes) | [Uv Docs](https://docs.astral.sh/uv/reference/settings/#pip_generate-hashes)
-\
+#### [Rye Docs](https://rye.astral.sh/guide/pyproject/#toolryegenerate-hashes) | [Uv Docs](https://docs.astral.sh/uv/reference/settings/#pip_generate-hashes)
 If set, `tool.rye.generate-hashes` will go to `tool.uv.pip.generate-hashes`.
 
+-----
+
 ### tool.rye.lock-with-sources
-[Rye Docs](https://rye.astral.sh/guide/pyproject/#toolryelock-with-sources) | [Uv Docs](https://docs.astral.sh/uv/reference/settings/#no-sources)
-\
+#### [Rye Docs](https://rye.astral.sh/guide/pyproject/#toolryelock-with-sources) | [Uv Docs](https://docs.astral.sh/uv/reference/settings/#no-sources)
 If set, `tool.rye.lock-with-sources` will go to `tool.uv.no-source`.
 If it was set to true, then it will be set to false and vice-versa.
 
+-----
+
 ### tool.rye.virtual
-[Rye Docs](https://rye.astral.sh/guide/pyproject/#toolryevirtual)
-\
+#### [Rye Docs](https://rye.astral.sh/guide/pyproject/#toolryevirtual) | [Uv Docs](https://docs.astral.sh/uv/concepts/projects/#build-systems)
+
+####  `<0.4.0`
 `tool.rye.virtual` will be removed.
+#### `>=0.4.0`
+`tool.rye.virtual` will be converted to `too.uv.package`.
+If it was set to true, then it will be set to false and vice-versa.
+
+
+
