@@ -75,7 +75,7 @@ If it was set to true, then it will be set to false and vice-versa.
 -----
 
 ### tool.rye.virtual
-#### [Rye Docs](https://rye.astral.sh/guide/pyproject/#toolryevirtual) | [Uv Docs](https://docs.astral.sh/uv/concepts/projects/#build-systems)
+#### [Rye Docs](https://rye.astral.sh/guide/pyproject/#toolryevirtual) | [Uv Docs](https://docs.astral.sh/uv/reference/settings/#package)
 
 ####  `<0.4.0`
 `tool.rye.virtual` will be removed.
