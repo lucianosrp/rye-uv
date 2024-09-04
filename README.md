@@ -48,40 +48,23 @@ Clone the repository and build using cargo
 cargo build --release
 ```
 
-## Adjustments
-### tool.rye
-All `tool.rye` will be renamed to `tool.uv`.
+## Conversion
 
------
-
-### tool.rye.universal
-[Rye Docs](https://rye.astral.sh/guide/pyproject/#toolryeuniversal) | [Uv Docs](https://docs.astral.sh/uv/reference/settings/#pip_universal)
+Some boolean values will be "inverted" to match.
 \
-If set, `tool.rye.universal` will go to `tool.uv.pip.universal`.
+Other settings may need to be deleted in orther to make the pyproject.toml fully compatible.
+\
+See the table below for more.
 
------
+| rye setting | uv setting | rye docs | uv docs |  uv min version | Inverted | Deleted
+| ----------- | ---------- | -------- | ------- | -------------- | --------|-----------| 
+| `tool.rye`    | `tool.uv`    |  [Link](https://rye.astral.sh/guide/pyproject/#toolryeuniversal)     |   [Link](https://docs.astral.sh/uv/reference/settings/#pip_universal)      |  0.3.0         |||
+| `tool.rye.universal`   | `tool.uv.pip.universal`    | [Link](https://rye.astral.sh/guide/pyproject/#toolryeuniversal)      |    [Link](https://docs.astral.sh/uv/reference/settings/#pip_universal)     |  0.3.0         |||
+| `tool.rye.generate-hashes`  | `tool.uv.pip.generate-hashes`    | [Link](https://rye.astral.sh/guide/pyproject/#toolryegenerate-hashes)     |   [Link](https://docs.astral.sh/uv/reference/settings/#pip_generate-hashes)    |  0.3.0         |||
+| `tool.rye.lock-with-sources`  | `tool.uv.no-source`    | [Link](https://rye.astral.sh/guide/pyproject/#toolryegenerate-hashes)     |   [Link](https://docs.astral.sh/uv/reference/settings/#pip_generate-hashes)    |  0.3.0         | ✅ ||
+| `tool.rye.virtual`  |                   |  [Link](https://rye.astral.sh/guide/pyproject/#toolryevirtual)     |     |  0.3.0         |  | ✅  ||
+| `tool.rye.virtual`  | `too.uv.package`|  [Link](https://rye.astral.sh/guide/pyproject/#toolryevirtual)     |  [Link](https://docs.astral.sh/uv/reference/settings/#package)   |  0.4.0 |✅||         
 
-### tool.rye.generate-hashes
-#### [Rye Docs](https://rye.astral.sh/guide/pyproject/#toolryegenerate-hashes) | [Uv Docs](https://docs.astral.sh/uv/reference/settings/#pip_generate-hashes)
-If set, `tool.rye.generate-hashes` will go to `tool.uv.pip.generate-hashes`.
-
------
-
-### tool.rye.lock-with-sources
-#### [Rye Docs](https://rye.astral.sh/guide/pyproject/#toolryelock-with-sources) | [Uv Docs](https://docs.astral.sh/uv/reference/settings/#no-sources)
-If set, `tool.rye.lock-with-sources` will go to `tool.uv.no-source`.
-If it was set to true, then it will be set to false and vice-versa.
-
------
-
-### tool.rye.virtual
-#### [Rye Docs](https://rye.astral.sh/guide/pyproject/#toolryevirtual) | [Uv Docs](https://docs.astral.sh/uv/reference/settings/#package)
-
-####  `<0.4.0`
-`tool.rye.virtual` will be removed.
-#### `>=0.4.0`
-`tool.rye.virtual` will be converted to `too.uv.package`.
-If it was set to true, then it will be set to false and vice-versa.
 
 
 
