@@ -1,10 +1,12 @@
 #[cfg(test)]
 mod test {
     use pretty_assertions::assert_eq;
+    use semver::Version;
     use toml_edit::DocumentMut;
 
     #[test]
     fn test_convert() -> anyhow::Result<()> {
+        let uv_version = Version::parse("0.4.0")?;
         let mut rye: DocumentMut = r#"
 [project]
 name = "test-project"
@@ -34,6 +36,7 @@ build-backend = "hatchling.build"
 [tool.rye]
 managed = true
 universal = true
+virtual = true
 generate-hashes = true
 dev-dependencies = [
     "polars",
@@ -71,7 +74,7 @@ addopts = "--cov=dapter --cov-fail-under=100"
 "#
         .parse()?;
 
-        rye_uv::convert(&mut rye)?;
+        rye_uv::convert(&mut rye, uv_version)?;
 
         assert_eq!(
             rye.to_string(),
@@ -111,6 +114,7 @@ dev-dependencies = [
     "typing-extensions",
 ]
 no-sources = false
+package = false
 
 [tool.uv.pip]
 universal = true
