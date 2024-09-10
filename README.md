@@ -63,7 +63,7 @@ See the table below for more.
 | `tool.rye.generate-hashes`  | `tool.uv.pip.generate-hashes`    | [Link](https://rye.astral.sh/guide/pyproject/#toolryegenerate-hashes)     |   [Link](https://docs.astral.sh/uv/reference/settings/#pip_generate-hashes)    |   >=0.3.0         |||
 | `tool.rye.lock-with-sources`  | `tool.uv.no-source`    | [Link](https://rye.astral.sh/guide/pyproject/#toolryegenerate-hashes)     |   [Link](https://docs.astral.sh/uv/reference/settings/#pip_generate-hashes)    |   >=0.3.0         | ✅ ||
 | `tool.rye.virtual`  |                   |  [Link](https://rye.astral.sh/guide/pyproject/#toolryevirtual)     |     |   >=0.3.0,<0.4.0         |  | ✅  ||
-| `tool.rye.virtual`  | `too.uv.package`|  [Link](https://rye.astral.sh/guide/pyproject/#toolryevirtual)     |  [Link](https://docs.astral.sh/uv/reference/settings/#package)   |   >=0.4.0 |✅||         
+| `tool.rye.virtual`  | `tool.uv.package`|  [Link](https://rye.astral.sh/guide/pyproject/#toolryevirtual)     |  [Link](https://docs.astral.sh/uv/reference/settings/#package)   |   >=0.4.0 |✅||         
 
 
 
