@@ -65,6 +65,11 @@ See the table below for more.
 | `tool.rye.virtual`  |                   |  [Link](https://rye.astral.sh/guide/pyproject/#toolryevirtual)     |     |   >=0.3.0,<0.4.0         |  | ✅  ||
 | `tool.rye.virtual`  | `tool.uv.package`|  [Link](https://rye.astral.sh/guide/pyproject/#toolryevirtual)     |  [Link](https://docs.astral.sh/uv/reference/settings/#package)   |   >=0.4.0 |✅||         
 
+## Locked dependencies
+`rye-uv` only touches the `pyproject.toml` file. You should use `uv sync` or `uv lock` to generate the `uv.lock` file after converting the `pyproject.toml` file using `rye-uv` . 
+This means that the locked dependencies on your `requirements.lock` (and `requirements-dev.lock`) will not be passed accross your new `uv.lock`. 
+If you wish to keep your dependencies locked, you should change the requirments on the `pyproject.toml` file to hard requirements (using `==` )  _before_ running `rye-uv`
+
 
 
 
